@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate – Helping Kids Foundation</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    /*
+     * Simple JavaScript to update the custom amount input when a
+     * predefined radio button is selected. This keeps the form clean
+     * and ensures only one value is submitted. The multi‑step form
+     * concept is simplified here for demonstration: fewer fields
+     * reduce friction, a key practice for donation pages【926625125824758†L395-L404】.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+      const amountRadios = document.querySelectorAll('input[name="amount"]');
+      const customInput = document.getElementById('customAmount');
+
+      amountRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+          if (radio.value === 'custom') {
+            customInput.disabled = false;
+            customInput.focus();
+          } else {
+            customInput.value = '';
+            customInput.disabled = true;
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <!-- Header reused from index page -->
+  <header>
+    <div class="container">
+      <div class="logo">Helping Kids Foundation</div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="donate.html" class="btn-donate">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Donation page content -->
+  <div class="donation-wrapper">
+    <h2>Make a Difference Today</h2>
+    <p class="lead">Your donation empowers children with education, healthcare and safe communities. Choose an amount below or specify a custom amount. Consider making your gift recurring to provide ongoing support.【926625125824758†L320-L337】</p>
+    <form class="donation-form" method="post" action="#">
+      <div class="field-group">
+        <label>Select your donation amount</label>
+        <div class="amount-options">
+          <label>
+            <input type="radio" name="amount" value="25">
+            <span>$25</span>
+          </label>
+          <label>
+            <input type="radio" name="amount" value="50">
+            <span>$50</span>
+          </label>
+          <label>
+            <input type="radio" name="amount" value="100">
+            <span>$100</span>
+          </label>
+          <label>
+            <input type="radio" name="amount" value="250">
+            <span>$250</span>
+          </label>
+          <label>
+            <input type="radio" name="amount" value="custom">
+            <span>Custom</span>
+          </label>
+        </div>
+        <input type="number" id="customAmount" name="customAmount" placeholder="Enter custom amount" min="1" step="1" disabled>
+      </div>
+
+      <div class="field-group">
+        <label>Donation frequency</label>
+        <select name="frequency">
+          <option value="once" selected>One‑time</option>
+          <option value="monthly">Monthly</option>
+          <option value="quarterly">Quarterly</option>
+          <option value="yearly">Yearly</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Your message (optional)</label>
+        <input type="text" name="message" placeholder="Add a note for us">
+      </div>
+
+      <button type="submit" class="submit-btn">Donate Now</button>
+      <!-- In a real implementation this button would submit to your payment processor. -->
+    </form>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Helping Kids Foundation. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
